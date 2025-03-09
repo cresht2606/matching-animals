@@ -1,3 +1,18 @@
+from board import *
+class AnimalType:
+    #Normal + Advanced Gamemode
+    Normanced = []
+    #Lunatic Gamemode
+    Lunatic = []
+    @classmethod
+    def get_animals(cls, difficulty):
+        if difficulty == "Normal" or difficulty == "Advanced":
+            return cls.Normanced
+        elif difficulty == "Lunatic":
+            return cls.Lunatic
+        else:
+            raise AttributeError("Invalid difficulty")
+
 class Tile:
     def __init__(self, x, y, animal_tile):
         self.x, self.y = x, y
@@ -8,12 +23,3 @@ class Tile:
     def __repr__(self):
         return f"[{self.animal_tile}]" if self.visible else "[X]"
 
-#CLI Test
-if __name__ == "__main__":
-    tile1 = Tile(5, 7, "Cat")
-    tile2 = Tile(8, 1, "Dog")
-
-    print("Property of tile1", tile1)
-    print("Property of tile2 - Before: ", tile2)
-    tile2.visible = False
-    print("Property of tile2 - After: ", tile2)
