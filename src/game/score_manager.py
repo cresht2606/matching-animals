@@ -42,19 +42,27 @@ def test_score():
     print("Initializing Score System...")
     score = Score()
 
-    #Multi-complex score evalution
+    # Simulate multiple match events:
+    print(">>> Simulating 6 consecutive matches...")
     for i in range(6):
         score.update_combo(True)
         score.add_score()
         score.apply_time_bonus()
+        print(f"After match {i+1} => Combo: {score.combo}, Score: {score.score}, Time Bonus: {score.time_added}")
 
+    # Print results after a series of successful updates:
+    print("\nResults after consecutive matches:")
     print(f"Total score: {score.return_score()}")
     print(f"Total combos: {score.combo}")
 
+    # Simulate a mismatch
+    print("\nSimulating a mismatch...")
     score.update_combo(False)
     score.add_score()
     score.apply_time_bonus()
 
+    # Results after mismatch:
+    print("Results after a mismatch:")
     print(f"Total score: {score.return_score()}")
     print(f"Total combos: {score.combo}")
 
